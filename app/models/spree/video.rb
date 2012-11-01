@@ -1,11 +1,11 @@
 module Spree
   class Video < ActiveRecord::Base
     belongs_to :owner, touch: true, polymorphic: true
-    
-    attr_accessible :reference, :url, :title, :hebergeur, :product_id
+
+    attr_accessible :reference, :url, :title, :hebergeur, :owner_id
     validates_presence_of :hebergeur
     validates :url, :presence => true
-    validates_uniqueness_of :reference , :scope => [:product_id]
+    validates_uniqueness_of :reference , :scope => [:owner_id, :owner_type]
 
     after_validation do
       if m = url.match(/(?:v=|\/)([\w-]+)(&.+)?$/)
