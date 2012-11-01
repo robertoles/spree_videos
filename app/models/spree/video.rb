@@ -1,7 +1,7 @@
 module Spree
   class Video < ActiveRecord::Base
-    belongs_to :product, :touch => true
-
+    belongs_to :owner, touch: true, polymorphic: true
+    
     attr_accessible :reference, :url, :title, :hebergeur, :product_id
     validates_presence_of :hebergeur
     validates :url, :presence => true
