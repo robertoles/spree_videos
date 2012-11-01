@@ -28,6 +28,6 @@ module Spree
   end
 
   def embed
-    VideoInfo.new(v.url).embed
+    VideoInfo.new(url).embed
   end
 end
