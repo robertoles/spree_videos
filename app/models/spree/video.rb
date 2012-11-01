@@ -26,4 +26,8 @@ module Spree
       self.title = video.title
     end
   end
+
+  def embed
+    VideoInfo.new(v.url).embed
+  end
 end
